@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+        <!--sales channel shop-->
+        <!--sales channel shop form view-->
+        <record model="ir.ui.view" id="sale_cahnnel_shop_view">
+            <field name="name">sale.cahnnel.shop.view</field>
+            <field name="model">sale.shop</field>
+            <field name="inherit_id" ref="sale.view_shop_form"/>
+            <field name="arch" type="xml">
+             <xpath expr="//group[@name='shop']" position="after">
+                 <group string='Sales Channel Shop Details' attrs="{'invisible':[('sale_channel_shop','=',False)]}" colspan="4">
+                        <field name="instance_id"/>
+                        <field name="prefix" placeholder="prefix"/>
+                        <field name="suffix" placeholder="suffix" />
+                        <field name="tax_include" />
+                        <field name="sale_channel_shop" invisible="1"/>
+                        <field name="picking_policy" />
+                        <field name="order_policy" />
+                        <field name="shop_address" />
+                  </group>
+                    <notebook colspan="4" attrs="{'invisible':[('sale_channel_shop','=',False)]}">
+                        <page string="Actions">
+                            <group name="order">
+                                 <label for="id" string="Orders"/>
+                                 <div>
+                                    <div name="orders">
+                                        <field name="last_import_order_date" nolabel="1"  class="oe_inline"/>
+                                        <button name="import_orders" string="Import Orders" type="object"/>
+                                        <field name="last_update_order_status_date" nolabel="1" class="oe_inline"/>
+                                        <button name="update_order_status" string="Update Order Status" type="object" />
+                                    </div>
+                                 </div>
+                            </group>
+                            <group name="price">
+                                 <label for="id" string="Price"/>
+                                 <div>
+                                    <div name="price">
+                                        <field name="last_export_price_date" nolabel="1" class="oe_inline"/>
+                                        <button name="export_price" string="Export price" type="object" />
+                                    </div>
+                                 </div>
+                            </group>
+                            <group name="stock">
+                                 <label for="id" string="Stock"/>
+                                 <div>
+                                    <div name="stock">
+                                        <field name="last_export_stock_date" nolabel="1" class="oe_inline"/>
+                                        <button name="export_stock" string="Export Stock" type="object" />
+                                    </div>
+                                 </div>
+                            </group>
+                        </page>
+                        <page string="Allocation">
+                            <group>
+                                <field name="alloc_type" />
+                                <field name="alloc_value" />
+                            </group>
+                        </page>
+                      </notebook>
+                  </xpath>
+               </field>   
+        </record>
+
+        <!--sales channel shop tree view-->
+        <record model="ir.ui.view" id="sales_channel_shop_tree_view">
+            <field name="name">sales.channel.shop.tree.view</field>
+            <field name="model">sale.shop</field>
+            <field name="arch" type="xml">
+                <tree string="Sales Channel Shop Details">
+                     <field name="name"/>
+                     <field name="instance_id"/>
+                     <field name="prefix"/>
+                     <field name="suffix"/>
+                </tree>
+           </field>
+        </record>
+
+        <!--sales channel shop action-->
+        <record id="action_sales_channel_shop" model="ir.actions.act_window">
+            <field name="name">Shops</field>
+            <field name="res_model">sale.shop</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="sales_channel_shop_tree_view"/>
+            <field name="domain">[('sale_channel_shop', '=', True)]</field>
+        </record>
+        
+        <!--Payment Method(sale Order)-->
+        <record model="ir.ui.view" id="view_sale_order_form_for_payment_method">
+            <field name="name">view.sale.order.form.for.payment.method</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <data>
+                <xpath expr="//field[@name='client_order_ref']" position="after">
+                    <field name="payment_method_id"/>
+                </xpath>
+              </data>
+           </field>
+        </record>
+        
+    </data>
+</openerp>

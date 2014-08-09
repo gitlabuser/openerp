@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_ecommerce_module_configuration" model="ir.ui.view">
+            <field name="name">Ecommerce Settings</field>
+            <field name="model">ecommerce.module.config.settings</field>
+            <field name="arch" type="xml">
+                <form string="Ecommerce Settings" version="7.0" class="oe_form_configuration">
+                    <header>
+                        <button string="Apply" type="object" name="execute" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" type="object" name="cancel" class="oe_link"/>
+                    </header>
+                    <separator string="Subscription Settings"/>
+                    
+                    <group>
+                        <label for="id" string="Sales Channels"/>
+                        <div>
+                            <div name="module_magento_teckzilla">
+                                <field name="user_id" invisible="1"/>
+                                <field name="module_magento_teckzilla" attrs="{'readonly':[('user_id','!=',1)]}"/>
+                                <label for="Magento Connect" string="Magento" />
+                                
+                                <field name="no_of_magento_instance" class="oe_inline" attrs="{'readonly':[('user_id','!=',1)]}"/>
+                                <label for="no_of_magento_instance" string="No of Instance" />
+                            </div>
+                            <div name="module_ebay_teckzilla">
+                                <field name="module_ebay_teckzilla" class="oe_inline" attrs="{'readonly':[('user_id','!=',1)]}"/>
+                                <label for="Ebay Connect" string="Ebay"/>
+                                
+                                <field name="no_of_ebay_instance" class="oe_inline" attrs="{'readonly':[('user_id','!=',1)]}"/>
+                                <label for="no_of_ebay_instance" string="No of Instance" />
+                            </div>
+                            <div name="module_amazon_teckzilla">
+                                <field name="module_amazon_teckzilla" class="oe_inline" attrs="{'readonly':[('user_id','!=',1)]}"/>
+                                <label for="Amazon Connect" string="Amazon"/>
+                                
+                                <field name="no_of_amazon_instance"  class="oe_inline" attrs="{'readonly':[('user_id','!=',1)]}"/>
+                                <label for="no_of_amazon_instance" string="No of Instance" />
+                            </div>
+                        </div>
+                    </group>
+                    
+                     <group>
+                        <label for="id" string="Shipping Services"/>
+                        <div>
+                            <div name="module_royalmail_teckzilla">
+                                <field name="module_royalmail_teckzilla" attrs="{'readonly':[('user_id','!=',1)]}"/>
+                                <label for="royalmail" string="RoyalMail" />
+                            </div>
+                            <div name="module_dpd_teckzilla">
+                                <field name="module_dpd_teckzilla" class="oe_inline" attrs="{'readonly':[('user_id','!=',1)]}"/>
+                                <label for="DPD" string="DPD"/>
+                            </div>
+                            <div name="module_fedex_teckzilla">
+                                <field name="module_fedex_teckzilla" class="oe_inline" attrs="{'readonly':[('user_id','!=',1)]}"/>
+                                <label for="Fedex" string="Fedex"/>
+                            </div>
+                            <div name="module_interlink_teckzilla">
+                                <field name="module_interlink_teckzilla" class="oe_inline" attrs="{'readonly':[('user_id','!=',1)]}"/>
+                                <label for="Interlink" string="Interlink"/>
+                            </div>
+                        </div>
+                    </group>
+                    
+                    <group>
+                        <label for="id" string="Users"/>
+                        <div>
+                            <div name="no_of_users">
+                               <div>
+                                   <field name="no_of_users" class="oe_inline" attrs="{'readonly':[('user_id','!=',1)]}"/>
+                                   <label for="no_of_users" string="No of Users"/>
+                               </div>
+                            </div>
+                            <div>
+                            </div>
+                        </div>
+                    </group>
+                    
+                </form>
+            </field>
+        </record>
+
+        <record id="action_ecommerce_module_configuration" model="ir.actions.act_window">
+            <field name="name">Users Subscription</field>
+            <field name="res_model">ecommerce.module.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+        </record>
+        <menuitem id="menu_ecommerce_module_configuration" parent="base.menu_config"
+            sequence="110" action="action_ecommerce_module_configuration"/>
+
+    </data>
+</openerp>

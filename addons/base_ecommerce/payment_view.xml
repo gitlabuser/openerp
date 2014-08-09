@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <!--Payment method Form View-->
+        <record model="ir.ui.view" id="ecommerce_payment_groups_form">
+            <field name="name">ecommerce.payment.groups.form</field>
+            <field name="model">ecommerce.payment.method</field>
+            <field name="arch" type="xml">
+                <form string="Ecommerce Payment Method">
+                    <group col="2" colspan="2">
+                        <field name="name" />
+                        <field name="val_order" />
+                        <field name="pay_invoice" />
+                        <field name="order_policy" />
+                        <field name="shop_id" widget="selection"/>
+                    </group>
+                </form>
+            </field>
+	</record>
+        
+        <!--Payment method Tree View-->
+        <record model="ir.ui.view" id="ecommerce_payment_groups_tree">
+            <field name="name">ecommerce.payment.method.tree</field>
+                <field name="model">ecommerce.payment.method</field>
+                <field name="arch" type="xml">
+                    <tree string="Ecommerce Payment Method">
+                        <field name="name" />
+                            <field name="val_order" />
+                            <field name="pay_invoice" />
+                            <field name="order_policy" />
+                            <field name="shop_id" />
+                    </tree>
+                </field>
+        </record>
+
+        <!--Payment method Action-->
+        <record id="action_ecommerce_payment_method" model="ir.actions.act_window">
+            <field name="name">Payment Method</field>
+            <field name="res_model">ecommerce.payment.method</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        
+        
+        <!--Payment Method form View-->
+        <record model="ir.ui.view" id="payment_method_view_1">
+            <field name="name">payment.method.view.1</field>
+            <field name="model">payment.method</field>
+            <field name="arch" type="xml">
+                <form string="Payment Method">
+                    <field name="name" />
+                    <field name="code" />
+                </form>
+            </field>
+        </record>
+        
+        <!--Payment Method tree View-->
+        <record model="ir.ui.view" id="payment_method_tree_view_1">
+            <field name="name">payment.method.tree.view.1</field>
+            <field name="model">payment.method</field>
+            <field name="arch" type="xml">
+                <tree string="Payment Method">
+                    <field name="name" />
+                    <field name="code" />
+                </tree>
+            </field>
+        </record>
+        
+         <!--Payment method Action-->
+        <record id="action_payment_method1" model="ir.actions.act_window">
+            <field name="name">Payment Method</field>
+            <field name="res_model">payment.method</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        
+       </data>
+ </openerp>

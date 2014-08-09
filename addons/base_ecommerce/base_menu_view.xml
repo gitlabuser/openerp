@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+        <data>
+           
+           <!--Root Menu-->
+           <menuitem id="menu_ecommerce_root" sequence="0" name="Market-Places"/>
+           
+           <!--Sales Channel Instance Menu-->
+           <menuitem id="menu_sale_channel_main" name="Sales Channels" icon="terp-sale" parent="menu_ecommerce_root" sequence="10"/>
+           <menuitem id="menu_sale_channel_instance" name="Instances" parent="menu_sale_channel_main" action="action_sales_channel_instance" sequence="11"/>
+           <!--sales channel shop menu-->
+            <menuitem id="menu_sale_channel_shop" name="Shops" parent="menu_sale_channel_main" action="action_sales_channel_shop" sequence="12"/>
+           
+
+            <!--Configuration menu-->
+           <menuitem id="menu_sales_channel_config" name="Configuration" parent="menu_ecommerce_root" sequence="20"/>
+           <menuitem id="menu_payment_method1" name="Payment Method" parent="menu_sales_channel_config" action="action_payment_method1"  sequence="21"/>
+           <!--Sales Workflow method menu-->
+           <menuitem id="menu_ecommerce_payment_method" name="Manage Order Workflow" parent="menu_sales_channel_config" action="action_ecommerce_payment_method"  sequence="22"/>
+
+           <!-- Logs method menu-->
+           <menuitem id="menu_sales_channel_logs" name="Logs" parent="menu_ecommerce_root" sequence="30"/>
+           <menuitem id="menu_log_view" name="Logs" parent="menu_sales_channel_logs" action="action_log_view"  sequence="31"/>
+           
+           <!-- Attribute-->
+           <menuitem id="menu_attribute_root" name="Attribute" parent="menu_ecommerce_root"  sequence="40"/>
+           <menuitem id="menu_attribute_set" name="Attribute Set" parent="menu_attribute_root" action="action_attribute_set"  sequence="41"/>
+           <menuitem id="menu_attribute" name="Attributes" parent="menu_attribute_root" action="action_attribute"  sequence="42"/>
+           <menuitem id="menu_attribute_option" name="Attribute Options" parent="menu_attribute_root" action="action_attribute_option"  sequence="43"/>
+
+    </data>
+</openerp>
+
+
