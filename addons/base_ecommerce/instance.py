@@ -19,7 +19,7 @@
 #
 ##############################################################################
 
-from osv import osv, fields
+from openerp.osv import osv, fields
 
 class sales_channel_instance(osv.osv):
     """ For instance of Sales Channel"""

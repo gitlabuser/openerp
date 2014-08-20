@@ -36,9 +36,9 @@ class sales_channel_instance(osv.osv):
             if int(ebay_inst) != 0 and int(ebay_inst) <= ebay_ins_count:
                 raise osv.except_osv(('Error!'), ('You have only access to create '+ebay_inst+' ebay instance'))
             
-        if vals.get('module_id') == 'amazon_teckzilla':
+        if vals.get('module_id') == 'oeoo_amazon':
             amazon_inst = para.get_param(cr, uid, "ecommerce.no_of_amazon_instance", context=context)
-            cr.execute("select count(id) from sales_channel_instance where module_id = 'amazon_teckzilla'")
+            cr.execute("select count(id) from sales_channel_instance where module_id = 'oeoo_amazon'")
             amazon_query = cr.fetchall()
             amazon_ins_count = amazon_query[0][0]
             if int(amazon_inst) != 0 and int(amazon_inst) <= amazon_ins_count:

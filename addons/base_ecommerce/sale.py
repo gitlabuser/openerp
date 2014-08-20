@@ -62,7 +62,7 @@ class sale_shop(osv.osv):
         log_vals = {}
         try:
             shop_obj = self.browse(cr, uid, ids[0])
-            if shop_obj.instance_id.module_id == 'amazon_teckzilla':
+            if shop_obj.instance_id.module_id == 'oeoo_amazon':
                 self.update_amazon_order_status(cr, uid, ids, context = context)
 
             if shop_obj.instance_id.module_id == 'ebay_teckzilla':
@@ -132,7 +132,7 @@ class sale_shop(osv.osv):
             shop_obj = self.browse(cr, uid, ids[0])
             print "=======shop_obj.instance_id.module_id==========",shop_obj.instance_id.module_id
             
-            if shop_obj.instance_id.module_id == 'amazon_teckzilla':
+            if shop_obj.instance_id.module_id == 'oeoo_amazon':
                 self.export_amazon_stock(cr,uid,ids,context)
             if shop_obj.instance_id.module_id == 'ebay_teckzilla':
                 self.export_stock_and_price(cr, uid, ids, context=context) 
@@ -166,7 +166,7 @@ class sale_shop(osv.osv):
         log_vals = {}
 #        try:
         shop_obj = self.browse(cr, uid, ids[0])
-        if shop_obj.instance_id.module_id == 'amazon_teckzilla':
+        if shop_obj.instance_id.module_id == 'oeoo_amazon':
             self.import_amazon_orders(cr, uid, ids, context = context)
         print "============shop_obj.instance_id.module_id==========>",shop_obj.instance_id.module_id
         if shop_obj.instance_id.module_id == 'ebay_teckzilla':

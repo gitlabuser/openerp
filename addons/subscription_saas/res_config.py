@@ -34,7 +34,7 @@ class ecommerce_config_settings(osv.osv_memory):
         'no_of_magento_instance': fields.char('No of Magento Instance', size=3),
         'module_ebay_teckzilla': fields.boolean('Ebay'),
         'no_of_ebay_instance': fields.char('No of Ebay Instance',size=3),
-        'module_amazon_teckzilla' : fields.boolean('Amazon'),
+        'module_oeoo_amazon' : fields.boolean('Amazon'),
         'no_of_amazon_instance': fields.char('No of Amazon Instance',size=3),
         'module_royalmail_teckzilla': fields.boolean('RoyalMail'),
         'module_dpd_teckzilla': fields.boolean('DPD'),
@@ -60,11 +60,11 @@ class ecommerce_config_settings(osv.osv_memory):
             m_obj.write(cr, uid, me_ids[0], {'is_installed': wiz_obj.module_ebay_teckzilla, 'no_instance':wiz_obj.no_of_ebay_instance}) 
         else:
             m_obj.create(cr, uid,{'name': 'Ebay','module':'ebay_teckzilla','is_installed': wiz_obj.module_ebay_teckzilla, 'no_instance':wiz_obj.no_of_ebay_instance, 'code': 2}) 
-        ma_ids = m_obj.search(cr, uid, [('module','=','amazon_teckzilla')])
+        ma_ids = m_obj.search(cr, uid, [('module','=','oeoo_amazon')])
         if ma_ids:
-            m_obj.write(cr, uid, ma_ids[0], {'is_installed': wiz_obj.module_amazon_teckzilla, 'no_instance':wiz_obj.no_of_amazon_instance}) 
+            m_obj.write(cr, uid, ma_ids[0], {'is_installed': wiz_obj.module_oeoo_amazon, 'no_instance':wiz_obj.no_of_amazon_instance}) 
         else:
-            m_obj.create(cr, uid,{'name': 'Amazon','module':'amazon_teckzilla','is_installed': wiz_obj.module_amazon_teckzilla, 'no_instance':wiz_obj.no_of_amazon_instance, 'code': 3}) 
+            m_obj.create(cr, uid,{'name': 'Amazon','module':'oeoo_amazon','is_installed': wiz_obj.module_oeoo_amazon, 'no_instance':wiz_obj.no_of_amazon_instance, 'code': 3}) 
         return super(ecommerce_config_settings,self).execute(cr, uid, ids, context=context)
   # set and get method for fields  
     def get_default_module_magento_teckzilla(self, cr, uid, ids, context=None):
@@ -103,14 +103,14 @@ class ecommerce_config_settings(osv.osv_memory):
         record = self.browse(cr, uid, ids[0], context=context)
         config_parameters.set_param(cr, uid, "ecommerce.no_of_ebay_instance", record.no_of_ebay_instance or '0', context=context)
         
-    def get_default_module_amazon_teckzilla(self, cr, uid, ids, context=None):
-        module_amazon_teckzilla = self.pool.get("ir.config_parameter").get_param(cr, uid, "ecommerce.module_amazon_teckzilla", context=context)
-        return {'module_amazon_teckzilla': module_amazon_teckzilla}
+    def get_default_module_oeoo_amazon(self, cr, uid, ids, context=None):
+        module_oeoo_amazon = self.pool.get("ir.config_parameter").get_param(cr, uid, "ecommerce.module_oeoo_amazon", context=context)
+        return {'module_oeoo_amazon': module_oeoo_amazon}
 
-    def set_default_module_amazon_teckzilla(self, cr, uid, ids, context=None):
+    def set_default_module_oeoo_amazon(self, cr, uid, ids, context=None):
         config_parameters = self.pool.get("ir.config_parameter")
         record = self.browse(cr, uid, ids[0], context=context)
-        config_parameters.set_param(cr, uid, "ecommerce.module_amazon_teckzilla", record.module_amazon_teckzilla or '', context=context)    
+        config_parameters.set_param(cr, uid, "ecommerce.module_oeoo_amazon", record.module_oeoo_amazon or '', context=context)    
     
     def get_default_no_of_amazon_instance(self, cr, uid, ids, context=None):
         no_of_amazon_instance = self.pool.get("ir.config_parameter").get_param(cr, uid, "ecommerce.no_of_amazon_instance", context=context)
@@ -143,7 +143,7 @@ class ecommerce_config_settings(osv.osv_memory):
         module_fedex_teckzilla = self.pool.get("ir.config_parameter").get_param(cr, uid, "ecommerce.module_fedex_teckzilla", context=context)
         return {'module_fedex_teckzilla': module_fedex_teckzilla}
 
-    def set_module_dpd_teckzilla(self, cr, uid, ids, context=None):
+    def set_module_fedex_teckzilla(self, cr, uid, ids, context=None):
         config_parameters = self.pool.get("ir.config_parameter")
         record = self.browse(cr, uid, ids[0], context=context)
         config_parameters.set_param(cr, uid, "ecommerce.module_fedex_teckzilla", record.module_fedex_teckzilla or '', context=context)

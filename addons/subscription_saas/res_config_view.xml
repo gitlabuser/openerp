@@ -32,8 +32,8 @@
                                 <field name="no_of_ebay_instance" class="oe_inline" attrs="{'readonly':[('user_id','!=',1)]}"/>
                                 <label for="no_of_ebay_instance" string="No of Instance" />
                             </div>
-                            <div name="module_amazon_teckzilla">
-                                <field name="module_amazon_teckzilla" class="oe_inline" attrs="{'readonly':[('user_id','!=',1)]}"/>
+                            <div name="module_oeoo_amazon">
+                                <field name="module_oeoo_amazon" class="oe_inline" attrs="{'readonly':[('user_id','!=',1)]}"/>
                                 <label for="Amazon Connect" string="Amazon"/>
                                 
                                 <field name="no_of_amazon_instance"  class="oe_inline" attrs="{'readonly':[('user_id','!=',1)]}"/>
