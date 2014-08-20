@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+        <!--Attribute set Form view-->
+        <record model="ir.ui.view" id="amazon_attribute_set_form_view">
+            <field name="name">amazon.attribute.set.form.view</field>
+            <field name="model">product.attribute.set</field>
+            <field name="inherit_id" ref="base_ecommerce.attribute_set_form_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@string ='Attributes']" position="after">
+                    <page string="Category Types">
+                        <field name="categ_type_ids" nolabel="1">
+                            <tree string="Types" editable="bottom">
+                                <field name="name"/>
+                                <field name="node"/>
+                                <field name="code_type" />
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>   
+        </record>
+
+    </data>
+</openerp>

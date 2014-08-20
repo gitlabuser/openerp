@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_add_amazon_asin" model="ir.ui.view">
+            <field name="name">Add Amazon ASIN</field>
+            <field name="model">add.amazon.asin</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Add ASIN">
+                    <separator string="ASIN Details" colspan="4" />
+                    <field name="listing_name" />
+                    <field name="sku" />
+                    <field name="name" />
+<!--                    <field name="price" />-->
+                    <field name="fulfillment_channel" />
+                    <field name="shop_id" on_change="onchange_type(shop_id)"/>
+<!--                    <field name="created_date" />-->
+                    <newline/>
+                    <group col="2" colspan="4">
+                        <button name="add_amazon_asin_action" string="Add ASIN" type="object" icon="gtk-apply" />
+                        <button special="cancel" string="_Cancel" icon="gtk-cancel"/>
+                    </group>
+
+                </form>
+            </field>
+        </record>
+
+
+        <act_window name="Add Amazon ASIN"
+            res_model="add.amazon.asin"
+            src_model="product.product"
+            view_mode="form"
+            target="new"
+            context="{'search_default_in_location':1}"
+            key2="client_action_multi"
+            id="action_view_add_amazon_asin"/>
+       
+    </data>
+</openerp>

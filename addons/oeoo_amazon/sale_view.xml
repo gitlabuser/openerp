@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+        <!--sales channel shop-->
+        <!--sales channel shop form view-->
+        <record model="ir.ui.view" id="sale_cahnnel_ebay_shop_view">
+            <field name="name">sale.cahnnel.ebay.shop.view</field>
+            <field name="model">sale.shop</field>
+            <field name="inherit_id" ref="base_ecommerce.sale_cahnnel_shop_view"/>
+            <field name="arch" type="xml">
+             <xpath expr="//page[@string='Actions']" position="after">
+                 <page string="Amazon Actions" attrs="{'invisible':[('amazon_shop','!=',True)]}">
+                            <group>
+                                <field name="amazon_shop" invisible="1" />
+                                 <label for="id" string="Request Merchant Listing Report"/>
+                                 <div>
+                                    <div name="Request Merchant Listing Report">
+                                        <field name="requested_report_id" nolabel="1"  class="oe_inline"/>
+                                        <button name="request_products_report" string="Request Products Report" type="object" icon="gtk-jump-to"/>
+                                        <field name="report_id" />
+                                        <button name="check_report_status" string="Check Report Status" type="object" icon="gtk-jump-to"/>
+                                         <field name="report_update" />
+                                        <button name="import_amazon_products" string="Import Products" type="object" icon="gtk-jump-to"/>
+                                        <button name="import_amazon_stock" string="Import stock" type="object" icon="gtk-jump-to"/>
+                                    </div>
+                                 </div>
+                            </group>
+                        </page>
+                  </xpath>
+                  <xpath expr="//page[@string='Actions']" position="after">
+                 
+                     <page string="Amazon Actions" attrs="{'invisible':[('amazon_fba_shop','!=',True)]}">         
+                        <group>
+                                <field name="amazon_shop" invisible="1" />
+                                 <label for="id" string="Request Merchant Listing Report"/>
+                                 <div>
+                                    <div name="Request Merchant Listing Report">
+                                        <field name="requested_report_id" nolabel="1"  class="oe_inline"/>
+                                        <button name="request_products_report" string="Request Products Report" type="object" icon="gtk-jump-to"/>
+                                        <field name="report_id" />
+                                        <button name="check_report_status" string="Check Report Status" type="object" icon="gtk-jump-to"/>
+                                         <field name="report_update" />
+                                        <button name="import_products" string="Import Products" type="object" icon="gtk-jump-to"/>
+                                    </div>
+                                 </div>
+                            </group>
+                     </page>
+                     <page string="FBA Location" attrs="{'invisible':[('amazon_fba_shop','!=',True)]}">
+                            <group>
+                                <field name="amazon_fba_shop" />
+                                <field name="fba_location" />
+                            </group>
+                        </page>
+                  </xpath>
+               </field>   
+        </record>
+    </data>
+</openerp>

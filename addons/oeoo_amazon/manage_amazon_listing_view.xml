@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_upload_amazon_products" model="ir.ui.view">
+            <field name="name">upload amazon products</field>
+            <field name="model">upload.amazon.products</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="upload amazon products" >
+                    <field name="name" />
+                     <field name="shop_id" widget="selection"/>
+                    <group col="4" colspan="4" string="Listing Details">
+                        <field name="prod_listing_ids" colspan="4" nolabel="1" mode="tree">
+                          <tree editable="bottom" string="Amazon Products Listing">
+                                <field name="product_id" />
+                                <field name="product_asin" domain="[('product_id','=',product_id)]" />
+                                 <field name="is_new_listing" />
+                                  <!--<field name="fulfillment_by" />-->
+                                   <field name="quantity_db" />
+                           </tree>
+                         </field>                    
+                        <field name="amazon_category" domain="[('shop_id.instance_id.module_id','=','oeoo_amazon')]"/>
+                        <field name="item_type" domain="[('attr_type_id','=',amazon_category)]"/>
+                        <field name="amazon_attribute_ids1" nolabel="1" colspan="4">
+                             <tree string="Attributes" editable="bottom">
+                               <field name="name" domain="[('attr_set_id','=',parent.amazon_category), ('is_leaf','=',True)]"/>
+                                <field name="value" domain="[('attribute_id','=',name)]" />
+                                <field name="value_text"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group col="2" colspan="4">
+                        <button name="upload_amazon_products" string="1.Upload Amazon Products"  type="object" icon="gtk-apply"/>
+                        <button name="upload_pricing" string="2.Upload Pricing" type="object" icon="gtk-apply"/>
+                        <button name="upload_inventory" string="3.Upload Inventory" type="object" icon="gtk-apply"/>
+                        <button name="import_image" string="4.Update/Add Images" icon="gtk-go-forward" type="object" />
+                        <button name="import_asin" string="5.Import Asin" icon="gtk-go-forward" type="object"/>
+                        <button name="get_feed_result" string="6.Get Feed Result" icon="gtk-go-forward" type="object"/>
+                        <button name="upload_price_inventory_image" string="Upload Price &amp; Inventory &amp; Image" type="object"/>
+                   </group>
+                    <group col="4" colspan="4">
+                        <field name="feed_result" colspan="4"/> <newline/>
+                        <!--<field name="res_feed_result" colspan="4"/> <newline/>-->
+                        <field name="feed_data" colspan="4"/> <newline/>
+                   </group>
+                </form>
+            </field>
+        </record>
+
+
+
+
+         <record id="view_upload_amazon_products_listing_tree" model="ir.ui.view">
+            <field name="name">view upload amazon products listing tree</field>
+            <field name="model">upload.amazon.products</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Attributes">
+<!--                    <field name="is_new_listing"/>-->
+                      <field name="name" />
+                     <field name="product_data"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_amazon_manage_listing" model="ir.actions.act_window">
+            <field name="name">Amazon Listings</field>
+            <field name="res_model">upload.amazon.products</field>
+             <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_upload_amazon_products_listing_tree"/>
+        </record>
+
+        <menuitem id="menu_amazon_product_listing_root" parent="base_ecommerce.menu_ecommerce_root" name="Amazon Listing" sequence="50"/>
+        <menuitem action="action_amazon_manage_listing" id="menu_amazon_product_listing_1" parent="menu_amazon_product_listing_root" sequence="51"/>
+        
+    </data>
+</openerp>

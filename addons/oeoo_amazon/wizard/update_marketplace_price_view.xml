@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+        <data>
+
+            <record id="inherit_update_marketplace_prices_stock" model="ir.ui.view">
+                <field name="name">inherit update marketplace prices and stocks</field>
+                <field name="model">update.marketplace.price</field>
+                <field name="inherit_id" ref="base_ecommerce.view_action_button_form_update_marketplace"/>
+                <field name="arch" type="xml">
+                    <xpath expr="//field[@name='name']" position= "after">
+                        <field name="on_amazon"/>
+                        <field name="amazon_shop_id" attrs="{'invisible': [('on_amazon','=', False)],'required':[('on_amazon','=',True)]}"/>
+                    </xpath>     
+                   <footer>
+                   </footer>
+                </field>
+            </record>
+            
+
+     </data>
+</openerp>

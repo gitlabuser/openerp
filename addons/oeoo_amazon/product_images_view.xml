@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+<record id="view_images_prod_amazon" model="ir.ui.view">
+            <field name="name">view.images.prod.amazon</field>
+            <field name="model">product.images</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="product_images_olbs.view_product_image_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='Image']//field[@name='link']" position="after" >
+                        <field name="is_amazon"/>
+                </xpath>
+            </field>
+        </record></data></openerp>
