@@ -286,10 +286,10 @@ class sale_shop(osv.osv):
         return partnershippingadd_id
   
     
-    def import_listing(self, cr, uid, id, shop_id, product_id,resultvals, context={}):
+    def import_listing(self, cr, uid, ids, shop_id, product_id,resultvals, context={}):
         return True  
    
-    def createAccountTax(self, cr, uid, id, value, context={}):
+    def createAccountTax(self, cr, uid, ids, value, context={}):
         accounttax_obj = self.pool.get('account.tax')
         accounttax_id = accounttax_obj.create(cr,uid,{'name':'Sales Tax(' + str(value) + '%)','amount':float(value)/100,'type_tax_use':'sale'})
         print 'createAccountTax id: ',accounttax_id
