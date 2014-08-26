@@ -186,6 +186,50 @@ class ListMatchingProducts:
         product_info.pop(0)
         return product_info
 
+class AmazonObjectUtils:
+    OrderRoot = ["Orders", "Order"]
+    OrderMap = {
+                "ShippingCompanyName":["ShippingAddress", "Name"],
+                "BillingCompanyName":["ShippingAddress", "Name"],
+                "ShippingName":["ShippingAddress", "Name"],
+                "BillingName":["ShippingAddress", "Name"],
+
+                "ShippingAddressLine1":["ShippingAddress", "AddressLine1"],
+                "BillingAddressLine1":["ShippingAddress", "AddressLine1"],
+
+                "ShippingCity":["ShippingAddress", "City"],
+                "BillingCity":["ShippingAddress", "City"],
+
+                "ShippingStateOrRegion":["ShippingAddress", "StateOrRegion"],
+                "BillingStateOrRegion":["ShippingAddress", "StateOrRegion"],
+
+                "ShippingPostalCode":["ShippingAddress", "PostalCode"],
+                "BillingPostalCode":["ShippingAddress", "PostalCode"],
+
+                "ShippingPhone":["ShippingAddress", "Phone"],
+                "BillingPhone":["ShippingAddress", "Phone"],
+
+                "ShippingCountryCode":["ShippingAddress", "CountryCode"],
+                "BillingCountryCode":["ShippingAddress", "CountryCode"],
+                
+                "Carrier":["ShipServiceLevel"],
+                "SalesChannel":["SalesChannel"],
+                "FulfillmentChannel":["FulfillmentChannel"],
+                "ShippingEmail":["BuyerEmail"],
+                "OrderId":["AmazonOrderId"],
+                "unique_sales_rec_no":["AmazonOrderId"],
+                "PurchaseDate":["PurchaseDate"],
+                "NumberOfItemsShipped":["NumberOfItemsShipped"],
+                "NumberOfItemsShipped":["NumberOfItemsShipped"],
+                "OrderStatus":["OrderStatus"],
+                "PaymentMethod":["PaymentMethod"],
+                }
+
+    def toErp(self,object,root,map):
+        info = {}
+        return info
+
+
 class ListOrders:
     Session = Session()
     def __init__(self, access_key, secret_key, merchant_id, marketplace_id, site):
@@ -258,6 +302,13 @@ class ListOrders:
         return transDetails
 
     def Get(self,timefrom,timeto,fulfilmentChannel):
+        x = mws.Orders(access_key=access_key, secret_key=secret_key, account_id=merchant_id,region=region)
+        orders = x.list_orders(marketplaceids=[market_place_id], created_after='2014-08-04T11:00:00Z', created_before='2014-08-04T13:00:00Z')#, lastupdatedafter, lastupdatedbefore, orderstatus, fulfillment_channels, payment_methods, buyer_email, seller_orderid, max_results)
+        response_data = orders.original
+        print response_data
+        
+        od = orders.parsed
+        
         api = Call()
         api.Session = self.Session
         version = '2011-01-01'

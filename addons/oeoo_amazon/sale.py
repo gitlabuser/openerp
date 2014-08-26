@@ -59,6 +59,7 @@ class sale_shop(osv.osv):
             fulfillment = 'AFN'
             
         results = amazon_api_obj.call(instance_obj.instance_id, 'ListOrders', createdAfter, False, fulfillment)
+        print "=**********results********", results
         
 #        logger.error('results %s',  results)
         time.sleep(30)
@@ -86,6 +87,7 @@ class sale_shop(osv.osv):
                         print 'result_val', result_val
                         result_val.update(result)
                         final_resultvals.append(result_val)
+                        print 'result_val : ',result_val
 
                 if final_resultvals:
                     order_ids = self.createOrder(cr, uid, ids, instance_obj.id, final_resultvals, context)
@@ -124,6 +126,8 @@ class sale_shop(osv.osv):
                         print 'result_val', result_val
                         result_val.update(result)
                         final_resultvals.append(result_val)
+                        
+                        print 'result_val : ',result_val
 
                 if final_resultvals:
                     order_ids = self.createOrder(cr, uid, ids, instance_obj.id, final_resultvals, context)

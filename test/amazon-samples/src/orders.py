@@ -27,9 +27,7 @@ def get_orders():
         orders=[orders]
         
     for order in orders:
-        for key in order:
-            print key
-            print order[key]
+        print order.ShipmentServiceLevelCategory
     
 get_orders()
 
